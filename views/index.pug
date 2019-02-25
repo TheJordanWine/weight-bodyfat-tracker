@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+    include head.pug    
+    body
+        div(class="main")
+            form(method="post" action="/submit" autocomplete="off")
+                div(class="col-1")
+                    label Weight: 
+                div(class="col-2")
+                    input(type="number" step="0.1" name="weight" min="100.0" max="300.0" required="true" autofocus="true")
+                div(class="col-1")
+                    label BFP: 
+                div(class="col-2")
+                    input(type="number" step="0.1" name="bfp" min="5.0" max="30.0" required="true")
+                div(class="col-3")
+                    button(type="submit" name="submit" value="submit") Submit
+
+            form(method="post" action="/refresh")
+                div(class="col-4")
+                    button(type="submit" name="refresh" value="refresh" ) Refresh
+            br
+        div(class="wrapper")
+            iframe(frameborder="0" scrolling="no" src="//plot.ly/~thejordanwine/0.embed")

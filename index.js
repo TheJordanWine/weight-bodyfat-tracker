@@ -105,7 +105,7 @@ function submitEntries(callback) {
         weights.push(entry.weight);
         bfps.push(entry.bfp);
       });
-      var data = [
+      var data0 = [
         {
           x: dates,
           y: weights,
@@ -113,8 +113,32 @@ function submitEntries(callback) {
           type: "scatter"
         }
       ];
-      var graphOptions = { filename: "date-axes", fileopt: "overwrite" };
-      plotly.plot(data, graphOptions, (err, msg) => {
+      var data1 = [
+        {
+          x: dates,
+          y: bfps,
+          mode: "markers",
+          type: "scatter"
+        }
+      ];
+      var graph0Options = {
+        filename: "weights",
+        fileopt: "overwrite",
+        layout: {
+          title: "Weight"
+        }
+      };
+      var graph1Options = {
+        filename: "bfps",
+        fileopt: "overwrite",
+        layout: {
+          title: "Body Fat Percent"
+        }
+      };
+      plotly.plot(data0, graph0Options, (err, msg) => {
+        console.log(msg);
+      });
+      plotly.plot(data1, graph1Options, (err, msg) => {
         console.log(msg);
       });
     });
